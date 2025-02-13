@@ -1,0 +1,9 @@
+.header {
+  height: var(--header-height);
+  background-color: var(--primary);
+  grid-column: span 2;
+}
+
+:host {
+  display: contents;
+}

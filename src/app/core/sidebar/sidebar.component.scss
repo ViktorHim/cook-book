@@ -1,0 +1,16 @@
+.sidebar {
+  grid-row: span 2;
+  background-color: var(--background);
+  border-right: 1px solid gray;
+  padding: 10px;
+}
+
+.navigation {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+:host {
+  display: contents;
+}

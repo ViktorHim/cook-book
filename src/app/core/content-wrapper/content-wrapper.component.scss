@@ -1,0 +1,9 @@
+.wrapper {
+  grid-column: 2;
+  grid-row: 2;
+  background-color: var(--background);
+}
+
+:host {
+  display: contents;
+}
