@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 
 @Component({
-  selector: 'recopes-page',
+  selector: 'recipes-page',
   templateUrl: './recipes-page.component.html',
   styleUrls: ['./recipes-page.component.scss'],
 })

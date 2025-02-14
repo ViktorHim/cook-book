@@ -2,6 +2,11 @@
   height: var(--header-height);
   background-color: var(--primary);
   grid-column: span 2;
+  padding: 5px;
+}
+.logo {
+  font-size: 25px;
+  color: var(--background) !important;
 }
 
 :host {

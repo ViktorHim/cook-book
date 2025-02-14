@@ -1,0 +1,18 @@
+.unit-item {
+  padding: 10px;
+  color: var(--background);
+  background-color: var(--secondary);
+  border-radius: 10px;
+}
+
+.unit-list {
+  // width: 100%;
+  gap: 10px;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+}
+
+:host {
+  display: contents;
+}

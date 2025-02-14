@@ -1,0 +1,15 @@
+.list {
+  width: 50%;
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.item {
+  margin-bottom: 10px;
+}
+
+:host {
+  display: contents;
+}

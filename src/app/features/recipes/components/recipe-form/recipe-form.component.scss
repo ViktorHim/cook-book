@@ -1,0 +1,9 @@
+.recipe-form {
+  display: flex;
+  justify-content: space-between;
+  width: 50%;
+}
+
+:host {
+  display: contents;
+}
