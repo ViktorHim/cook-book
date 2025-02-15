@@ -11,7 +11,7 @@
     </button>
     <mat-menu #menu="matMenu">
       <button mat-menu-item>Редактировать</button>
-      <button mat-menu-item>Удалить</button>
+      <button (click)="openRemoveDialog()" mat-menu-item>Удалить</button>
     </mat-menu>
   </mat-card-header>
   <mat-card-content>
