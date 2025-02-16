@@ -15,16 +15,26 @@ import { MatMenuModule } from '@angular/material/menu';
 import { MatSnackBarModule } from '@angular/material/snack-bar';
 import { MatDividerModule } from '@angular/material/divider';
 import { MatDialogModule } from '@angular/material/dialog';
+import { RecipesListPageComponent } from './pages/recipes-list-page/recipes-list-page.component';
+import { RecipesRoutingModule } from './recipes-routing.module';
+import { RecipesDetailsPageComponent } from './pages/recipes-details-page/recipes-details-page.component';
+import { RecipesEditPageComponent } from './pages/recipes-edit-page/recipes-edit-page.component';
+import { RecipesCreatePageComponent } from './pages/recipes-create-page/recipes-create-page.component';
 
 @NgModule({
   declarations: [
     RecipeItemComponent,
     RecipeListComponent,
     RecipeFormComponent,
+    RecipesListPageComponent,
     DeleteConfirmationDialogComponent,
+    RecipesDetailsPageComponent,
+    RecipesEditPageComponent,
+    RecipesCreatePageComponent,
   ],
   imports: [
     CommonModule,
+    RecipesRoutingModule,
 
     MatCardModule,
     MatButtonModule,
@@ -36,6 +46,5 @@ import { MatDialogModule } from '@angular/material/dialog';
     MatDividerModule,
     MatDialogModule,
   ],
-  exports: [RecipeListComponent, RecipeFormComponent],
 })
 export class RecipesModule {}

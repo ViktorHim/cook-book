@@ -9,10 +9,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { SidebarComponent } from './core/components/sidebar/sidebar.component';
 import { MatGridListModule } from '@angular/material/grid-list';
 import { MatButtonModule } from '@angular/material/button';
-import { MatCardModule } from '@angular/material/card';
 import { ContentWrapperComponent } from './core/components/content-wrapper/content-wrapper.component';
-import { RecipesPageComponent } from './pages/recipes-page/recipes-page.component';
-import { UnitsPageComponent } from './pages/units-page/units-page.component';
 import { NotFoundPageComponent } from './pages/not-found-page/not-found-page.component';
 import { RecipesModule } from './features/recipes/recipes.module';
 import { UnitsModule } from './features/units/units.module';
@@ -28,8 +25,6 @@ import { AngularFirestoreModule } from '@angular/fire/compat/firestore';
     HeaderComponent,
     SidebarComponent,
     ContentWrapperComponent,
-    RecipesPageComponent,
-    UnitsPageComponent,
     NotFoundPageComponent,
   ],
   imports: [
@@ -42,7 +37,6 @@ import { AngularFirestoreModule } from '@angular/fire/compat/firestore';
 
     MatGridListModule,
     MatButtonModule,
-    MatCardModule,
 
     AngularFireModule.initializeApp(enviroment),
     AngularFirestoreModule,

@@ -10,7 +10,9 @@
       <mat-icon> more_vert </mat-icon>
     </button>
     <mat-menu #menu="matMenu">
-      <button mat-menu-item>Редактировать</button>
+      <a [routerLink]="['/recipes', recipe.id, 'edit']" mat-menu-item
+        >Редактировать</a
+      >
       <button (click)="openRemoveDialog()" mat-menu-item>Удалить</button>
     </mat-menu>
   </mat-card-header>
@@ -22,7 +24,7 @@
     <mat-divider />
   </mat-card-content>
   <mat-card-actions>
-    <a class="accent" mat-raised-button>
+    <a [routerLink]="['/recipes', recipe.id]" class="accent" mat-raised-button>
       <mat-icon> chevron_right</mat-icon>
       Читать
     </a>
