@@ -6,6 +6,12 @@ import { RecipeListComponent } from './components/recipe-list/recipe-list.compon
 import { RecipeFormComponent } from './components/recipe-form/recipe-form.component';
 import { DeleteConfirmationDialogComponent } from './components/delete-confirmation-dialog/delete-confirmation-dialog.component';
 
+import { RecipesListPageComponent } from './pages/recipes-list-page/recipes-list-page.component';
+import { RecipesRoutingModule } from './recipes-routing.module';
+import { RecipesDetailsPageComponent } from './pages/recipes-details-page/recipes-details-page.component';
+import { RecipesEditPageComponent } from './pages/recipes-edit-page/recipes-edit-page.component';
+import { RecipesCreatePageComponent } from './pages/recipes-create-page/recipes-create-page.component';
+
 import { MatCardModule } from '@angular/material/card';
 import { MatButtonModule } from '@angular/material/button';
 import { MatIconModule } from '@angular/material/icon';
@@ -15,11 +21,9 @@ import { MatMenuModule } from '@angular/material/menu';
 import { MatSnackBarModule } from '@angular/material/snack-bar';
 import { MatDividerModule } from '@angular/material/divider';
 import { MatDialogModule } from '@angular/material/dialog';
-import { RecipesListPageComponent } from './pages/recipes-list-page/recipes-list-page.component';
-import { RecipesRoutingModule } from './recipes-routing.module';
-import { RecipesDetailsPageComponent } from './pages/recipes-details-page/recipes-details-page.component';
-import { RecipesEditPageComponent } from './pages/recipes-edit-page/recipes-edit-page.component';
-import { RecipesCreatePageComponent } from './pages/recipes-create-page/recipes-create-page.component';
+import { MatTableModule } from '@angular/material/table';
+import { IngredientsTableComponent } from './components/ingredients-table/ingredients-table.component';
+import { InstructionsTableComponent } from './components/instructions-table/instructions-table.component';
 
 @NgModule({
   declarations: [
@@ -31,6 +35,8 @@ import { RecipesCreatePageComponent } from './pages/recipes-create-page/recipes-
     RecipesDetailsPageComponent,
     RecipesEditPageComponent,
     RecipesCreatePageComponent,
+    IngredientsTableComponent,
+    InstructionsTableComponent,
   ],
   imports: [
     CommonModule,
@@ -45,6 +51,7 @@ import { RecipesCreatePageComponent } from './pages/recipes-create-page/recipes-
     MatSnackBarModule,
     MatDividerModule,
     MatDialogModule,
+    MatTableModule,
   ],
 })
 export class RecipesModule {}

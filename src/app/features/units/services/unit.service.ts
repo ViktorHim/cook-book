@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { Unit } from '../types/unit.type';
 import { AngularFirestore } from '@angular/fire/compat/firestore';
-import { Observable } from 'rxjs';
+import { catchError, Observable, of } from 'rxjs';
 import { FirestoreCollections } from 'src/config/firestore.config';
 
 @Injectable({
@@ -10,9 +10,10 @@ import { FirestoreCollections } from 'src/config/firestore.config';
 export class UnitService {
   constructor(private firestore: AngularFirestore) {}
 
-  getUnits(): Observable<Unit[]> {
+  getUnits(): Observable<Unit[] | null> {
     return this.firestore
       .collection<Unit>(FirestoreCollections.UNITS)
-      .valueChanges();
+      .valueChanges({ idField: 'id' })
+      .pipe(catchError((error) => of(null)));
   }
 }

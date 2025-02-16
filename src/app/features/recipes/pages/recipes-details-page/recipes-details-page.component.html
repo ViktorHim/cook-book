@@ -1,1 +1,15 @@
-<p>recipes-details-page works!</p>
+<div class="page">
+  <a mat-fab class="back-link" [routerLink]="['/recipes', 'list']">
+    <mat-icon> arrow_back </mat-icon>
+  </a>
+  <ng-container *ngIf="!!recipe; else loading">
+    <h1>{{ recipe.name }}</h1>
+    <h2>Ингредиенты</h2>
+    <ingredients-table [ingredients]="getIngredients()" />
+    <h2>Инструкция</h2>
+    <instructions-table [instructions]="getInstructions()" />
+  </ng-container>
+  <ng-template #loading>
+    <p>Загрузка...</p>
+  </ng-template>
+</div>

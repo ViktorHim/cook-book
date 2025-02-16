@@ -1,10 +1,11 @@
-import { Unit } from '../../units/types/unit.type';
 import { Timestamp } from '@angular/fire/firestore';
+import { Ingredient } from './ingredient.type';
+import { Instruction } from './instruction.type';
 
 export interface Recipe {
   id?: string;
   name: string;
-  description: string;
+  instructions: Instruction[];
   ingredients: Ingredient[];
   createdAt: Date | null;
 }
@@ -12,13 +13,7 @@ export interface Recipe {
 export interface RawRecipe {
   id?: string;
   name: string;
-  description: string;
+  instructions: Instruction[];
   ingredients: Ingredient[];
   createdAt?: Timestamp;
-}
-
-export interface Ingredient {
-  name: string;
-  count: number;
-  unit: Unit;
 }
