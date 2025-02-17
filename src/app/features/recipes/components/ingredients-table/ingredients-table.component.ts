@@ -9,5 +9,5 @@ import { TableIngredient } from '../../types/ingredient.type';
 export class IngredientsTableComponent {
   @Input() ingredients!: TableIngredient[];
 
-  readonly columns: string[] = ['number', 'name', 'count', 'unit'];
+  readonly columns: string[] = ['number', 'name', 'quantity', 'unit'];
 }

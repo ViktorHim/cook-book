@@ -1,3 +1,4 @@
+import { ReactiveFormsModule } from '@angular/forms';
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 
@@ -5,11 +6,12 @@ import { RecipeItemComponent } from './components/recipe-item/recipe-item.compon
 import { RecipeListComponent } from './components/recipe-list/recipe-list.component';
 import { RecipeFormComponent } from './components/recipe-form/recipe-form.component';
 import { DeleteConfirmationDialogComponent } from './components/delete-confirmation-dialog/delete-confirmation-dialog.component';
+import { IngredientsTableComponent } from './components/ingredients-table/ingredients-table.component';
+import { InstructionsTableComponent } from './components/instructions-table/instructions-table.component';
 
 import { RecipesListPageComponent } from './pages/recipes-list-page/recipes-list-page.component';
 import { RecipesRoutingModule } from './recipes-routing.module';
 import { RecipesDetailsPageComponent } from './pages/recipes-details-page/recipes-details-page.component';
-import { RecipesEditPageComponent } from './pages/recipes-edit-page/recipes-edit-page.component';
 import { RecipesCreatePageComponent } from './pages/recipes-create-page/recipes-create-page.component';
 
 import { MatCardModule } from '@angular/material/card';
@@ -22,8 +24,11 @@ import { MatSnackBarModule } from '@angular/material/snack-bar';
 import { MatDividerModule } from '@angular/material/divider';
 import { MatDialogModule } from '@angular/material/dialog';
 import { MatTableModule } from '@angular/material/table';
-import { IngredientsTableComponent } from './components/ingredients-table/ingredients-table.component';
-import { InstructionsTableComponent } from './components/instructions-table/instructions-table.component';
+import { MatStepperModule } from '@angular/material/stepper';
+import { MatSelectModule } from '@angular/material/select';
+import { RecipeNameFormStepComponent } from './components/recipe-name-form-step/recipe-name-form-step.component';
+import { IngredientsFormStepComponent } from './components/ingredients-form-step/ingredients-form-step.component';
+import { InstructionsFormStepComponent } from './components/instructions-form-step/instructions-form-step.component';
 
 @NgModule({
   declarations: [
@@ -33,14 +38,17 @@ import { InstructionsTableComponent } from './components/instructions-table/inst
     RecipesListPageComponent,
     DeleteConfirmationDialogComponent,
     RecipesDetailsPageComponent,
-    RecipesEditPageComponent,
     RecipesCreatePageComponent,
     IngredientsTableComponent,
     InstructionsTableComponent,
+    RecipeNameFormStepComponent,
+    IngredientsFormStepComponent,
+    InstructionsFormStepComponent,
   ],
   imports: [
     CommonModule,
     RecipesRoutingModule,
+    ReactiveFormsModule,
 
     MatCardModule,
     MatButtonModule,
@@ -52,6 +60,8 @@ import { InstructionsTableComponent } from './components/instructions-table/inst
     MatDividerModule,
     MatDialogModule,
     MatTableModule,
+    MatStepperModule,
+    MatSelectModule,
   ],
 })
 export class RecipesModule {}

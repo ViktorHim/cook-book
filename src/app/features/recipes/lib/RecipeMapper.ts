@@ -24,7 +24,7 @@ export class RecipeMapper implements DataMapper<RawRecipe, Recipe> {
   toData(raw: RawRecipe): Recipe {
     return {
       ...raw,
-      createdAt: raw.createdAt?.toDate() ?? null,
+      createdAt: raw.createdAt?.toDate() ?? undefined,
     };
   }
 }

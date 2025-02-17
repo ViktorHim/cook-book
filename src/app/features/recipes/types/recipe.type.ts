@@ -7,7 +7,7 @@ export interface Recipe {
   name: string;
   instructions: Instruction[];
   ingredients: Ingredient[];
-  createdAt: Date | null;
+  createdAt?: Date;
 }
 
 export interface RawRecipe {

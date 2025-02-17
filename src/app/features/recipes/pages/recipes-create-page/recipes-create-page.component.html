@@ -1,1 +1,16 @@
-<p>recipes-create-page works!</p>
+<div class="page">
+  <mat-horizontal-stepper [linear]="true" #stepper class="stepper">
+    <!-- Шаг 1: название рецепта -->
+    <mat-step [stepControl]="recipeFormService.recipeNameFormGroup">
+      <recipe-name-form />
+    </mat-step>
+    <!-- Шаг 2: ингредиенты -->
+    <mat-step [stepControl]="recipeFormService.ingredientsFormArray">
+      <ingredients-form-step />
+    </mat-step>
+    <!-- Шаг 3: инструкция -->
+    <mat-step [stepControl]="recipeFormService.instructionsFormArray">
+      <instructions-form-step [isEdit]="isEditMode" (onSubmit)="onSubmit()" />
+    </mat-step>
+  </mat-horizontal-stepper>
+</div>

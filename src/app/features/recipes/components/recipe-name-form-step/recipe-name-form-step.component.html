@@ -1,0 +1,16 @@
+<form [formGroup]="recipeFormService.recipeNameFormGroup">
+  <ng-template matStepLabel>Введите название рецепта</ng-template>
+  <mat-form-field>
+    <mat-label>Название</mat-label>
+    <input matInput formControlName="name" />
+  </mat-form-field>
+  <div>
+    <button
+      mat-button
+      matStepperNext
+      [disabled]="recipeFormService.recipeNameFormGroup.invalid"
+    >
+      Далее
+    </button>
+  </div>
+</form>

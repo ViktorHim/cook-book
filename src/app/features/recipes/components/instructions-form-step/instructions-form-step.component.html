@@ -1,0 +1,37 @@
+<form [formGroup]="recipeFormService.instructionsFormGroup">
+  <ng-template matStepLabel>Добавьте инструкцию</ng-template>
+  <div formArrayName="instructions">
+    <div
+      *ngFor="
+        let instruction of recipeFormService.instructionsFormArray.controls;
+        let i = index
+      "
+    >
+      <mat-form-field class="instruction-field">
+        <mat-label>Шаг {{ i + 1 }}</mat-label>
+        <textarea matInput [formControlName]="i"></textarea>
+      </mat-form-field>
+      <button
+        mat-icon-button
+        color="warn"
+        (click)="recipeFormService.removeInstruction(i)"
+        *ngIf="recipeFormService.instructionsFormArray.controls.length > 1"
+      >
+        <mat-icon>close</mat-icon>
+      </button>
+    </div>
+  </div>
+  <button mat-raised-button (click)="recipeFormService.addInstruction()">
+    Добавить шаг
+  </button>
+  <div>
+    <button mat-button matStepperPrevious>Назад</button>
+    <button
+      mat-button
+      [disabled]="!recipeFormService.isFormValid()"
+      (click)="handleClick()"
+    >
+      {{ isEdit ? "Cохранить изменения" : "Создать рецепт" }}
+    </button>
+  </div>
+</form>

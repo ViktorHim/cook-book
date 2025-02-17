@@ -1,0 +1,46 @@
+<form [formGroup]="recipeFormServive.ingredientsFormGroup">
+  <ng-template matStepLabel>Добавьте ингредиенты</ng-template>
+  <div formArrayName="ingredients">
+    <div
+      *ngFor="
+        let ingredient of recipeFormServive.ingredientsFormArray.controls;
+        let i = index
+      "
+      [formGroupName]="i"
+    >
+      <mat-form-field>
+        <mat-label>Ингредиент {{ i + 1 }}</mat-label>
+        <input matInput formControlName="name" />
+      </mat-form-field>
+      <mat-form-field>
+        <mat-label>Количество</mat-label>
+        <input matInput type="number" formControlName="quantity" />
+      </mat-form-field>
+      <mat-form-field>
+        <mat-label>Единица измерения</mat-label>
+        <input matInput formControlName="unit" />
+      </mat-form-field>
+      <button
+        mat-icon-button
+        color="warn"
+        (click)="recipeFormServive.removeIngredient(i)"
+        *ngIf="recipeFormServive.ingredientsFormArray.controls.length > 1"
+      >
+        <mat-icon> close </mat-icon>
+      </button>
+    </div>
+  </div>
+  <button mat-raised-button (click)="recipeFormServive.addIngredient()">
+    Добавить ингредиент
+  </button>
+  <div>
+    <button mat-button matStepperPrevious>Назад</button>
+    <button
+      mat-button
+      matStepperNext
+      [disabled]="recipeFormServive.ingredientsFormGroup.invalid"
+    >
+      Далее
+    </button>
+  </div>
+</form>
