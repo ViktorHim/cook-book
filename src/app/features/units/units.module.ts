@@ -5,10 +5,17 @@ import { CommonModule } from '@angular/common';
 import { MatChipsModule } from '@angular/material/chips';
 import { UnitsPageComponent } from './pages/units-page/units-page.component';
 import { UnitsRoutingModule } from './units-routing.module';
+import { SharedModule } from 'src/app/shared/shared.module';
 
 @NgModule({
   declarations: [UnitListComponent, UnitsPageComponent],
-  imports: [CommonModule, UnitsRoutingModule, MatChipsModule, MatCardModule],
+  imports: [
+    CommonModule,
+    UnitsRoutingModule,
+    MatChipsModule,
+    MatCardModule,
+    SharedModule,
+  ],
   exports: [UnitListComponent],
 })
 export class UnitsModule {}

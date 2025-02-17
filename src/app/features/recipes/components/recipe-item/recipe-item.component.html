@@ -19,7 +19,16 @@
   <mat-card-content>
     <mat-divider />
     <div class="content">
-      <p *ngFor="let ingredient of recipe.ingredients">{{ ingredient.name }}</p>
+      <p *ngFor="let ingredient of recipe.ingredients.slice(0, 5)">
+        {{
+          ingredient.name +
+            " " +
+            ingredient.quantity +
+            " " +
+            ingredient.unit.value
+        }}
+      </p>
+      <p *ngIf="recipe.ingredients.length > 5">...</p>
     </div>
     <mat-divider />
   </mat-card-content>

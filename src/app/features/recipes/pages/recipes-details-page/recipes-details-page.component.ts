@@ -5,8 +5,10 @@ import { RecipeService } from '../../services/recipe.service';
 import { Recipe } from '../../types/recipe.type';
 import { TableIngredient } from '../../types/ingredient.type';
 import { TableInstruction } from '../../types/instruction.type';
+import { LoaderService } from 'src/app/core/services/loader.service';
 
 @Component({
+  selector: 'recipes-details-page',
   templateUrl: './recipes-details-page.component.html',
   styleUrls: ['./recipes-details-page.component.scss'],
 })
@@ -14,10 +16,12 @@ export class RecipesDetailsPageComponent implements OnInit, OnDestroy {
   private routeSub?: Subscription;
   public id: string | null = null;
   public recipe?: Recipe;
+  public isLoading$ = this.loaderService.isLoading$;
 
   constructor(
     private route: ActivatedRoute,
-    private recipesService: RecipeService
+    private recipesService: RecipeService,
+    private loaderService: LoaderService
   ) {}
 
   ngOnInit(): void {
@@ -45,11 +49,13 @@ export class RecipesDetailsPageComponent implements OnInit, OnDestroy {
   }
 
   private getRecipe(): void {
+    this.loaderService.show();
     if (this.id) {
       this.recipesService.getRecipeById(this.id).subscribe((recipe) => {
         if (recipe) {
           this.recipe = recipe;
         }
+        this.loaderService.hide();
       });
     }
   }

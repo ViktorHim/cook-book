@@ -1,10 +1,10 @@
-<!-- <button mat-fab>
-  <mat-icon> Home </mat-icon>
-</button> -->
-<ul class="list">
-  <recipe-item
-    *ngFor="let recipe of recipes"
-    className="item"
-    [recipe]="recipe"
-  />
-</ul>
+<page-loader *ngIf="isLoading$ | async; else content" />
+<ng-template #content>
+  <ul class="list">
+    <recipe-item
+      *ngFor="let recipe of recipes"
+      className="item"
+      [recipe]="recipe"
+    />
+  </ul>
+</ng-template>

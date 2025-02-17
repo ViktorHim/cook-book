@@ -29,7 +29,7 @@ import { MatSelectModule } from '@angular/material/select';
 import { RecipeNameFormStepComponent } from './components/recipe-name-form-step/recipe-name-form-step.component';
 import { IngredientsFormStepComponent } from './components/ingredients-form-step/ingredients-form-step.component';
 import { InstructionsFormStepComponent } from './components/instructions-form-step/instructions-form-step.component';
-
+import { SharedModule } from 'src/app/shared/shared.module';
 @NgModule({
   declarations: [
     RecipeItemComponent,
@@ -49,6 +49,7 @@ import { InstructionsFormStepComponent } from './components/instructions-form-st
     CommonModule,
     RecipesRoutingModule,
     ReactiveFormsModule,
+    SharedModule,
 
     MatCardModule,
     MatButtonModule,

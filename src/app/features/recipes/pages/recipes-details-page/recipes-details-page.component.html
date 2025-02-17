@@ -1,15 +1,26 @@
-<div class="page">
-  <a mat-fab class="back-link" [routerLink]="['/recipes', 'list']">
-    <mat-icon> arrow_back </mat-icon>
-  </a>
-  <ng-container *ngIf="!!recipe; else loading">
-    <h1>{{ recipe.name }}</h1>
+<page-loader *ngIf="isLoading$ | async; else content" />
+<ng-template #content>
+  <div class="page">
+    <a
+      matTooltip="Назад"
+      mat-fab
+      class="back-link"
+      [routerLink]="['/recipes', 'list']"
+    >
+      <mat-icon> arrow_back </mat-icon>
+    </a>
+    <a
+      matTooltip="Редактировать"
+      mat-fab
+      class="edit-link"
+      [routerLink]="['/recipes', recipe?.id, 'edit']"
+    >
+      <mat-icon> edit </mat-icon>
+    </a>
+    <h1>{{ recipe?.name }}</h1>
     <h2>Ингредиенты</h2>
     <ingredients-table [ingredients]="getIngredients()" />
     <h2>Инструкция</h2>
     <instructions-table [instructions]="getInstructions()" />
-  </ng-container>
-  <ng-template #loading>
-    <p>Загрузка...</p>
-  </ng-template>
-</div>
+  </div>
+</ng-template>

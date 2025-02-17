@@ -1,5 +1,8 @@
-<mat-chip-listbox class="unit-list">
-  <mat-chip class="unit-item" *ngFor="let item of unitList">
-    {{ item.value }}
-  </mat-chip>
-</mat-chip-listbox>
+<page-loader *ngIf="isLoading$ | async; else content" />
+<ng-template #content>
+  <mat-chip-listbox class="unit-list">
+    <mat-chip class="unit-item" *ngFor="let item of unitList">
+      {{ item.value }}
+    </mat-chip>
+  </mat-chip-listbox>
+</ng-template>

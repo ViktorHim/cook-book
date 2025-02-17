@@ -18,7 +18,11 @@
       </mat-form-field>
       <mat-form-field>
         <mat-label>Единица измерения</mat-label>
-        <input matInput formControlName="unit" />
+        <mat-select formControlName="unit">
+          <mat-option *ngFor="let unit of units" [value]="unit.value">{{
+            unit.value
+          }}</mat-option>
+        </mat-select>
       </mat-form-field>
       <button
         mat-icon-button

@@ -3,6 +3,7 @@ import { Recipe } from '../../types/recipe.type';
 import { RecipeService } from '../../services/recipe.service';
 import { FormService } from '../../services/form.service';
 import { ActivatedRoute, Router } from '@angular/router';
+import { LoaderService } from 'src/app/core/services/loader.service';
 
 @Component({
   selector: 'app-recipes-create-page',
@@ -11,12 +12,14 @@ import { ActivatedRoute, Router } from '@angular/router';
 })
 export class RecipesCreatePageComponent {
   public isEditMode = false;
+  public isLoading$ = this.loaderService.isLoading$;
   private recipeId: string | null = null;
   private recipe: Recipe | null = null;
 
   constructor(
     public recipeFormService: FormService,
     private recipeService: RecipeService,
+    private loaderService: LoaderService,
     private route: ActivatedRoute,
     private router: Router
   ) {
@@ -25,9 +28,11 @@ export class RecipesCreatePageComponent {
       this.isEditMode = !!this.recipeId;
 
       if (this.isEditMode) {
+        loaderService.show();
         this.recipeService.getRecipeById(this.recipeId!).subscribe((recipe) => {
           this.recipe = recipe;
           this.init();
+          loaderService.hide();
         });
       } else {
         this.recipeFormService.clearForms();
@@ -65,24 +70,33 @@ export class RecipesCreatePageComponent {
     });
   }
 
-  public onSubmit(): void {
-    if (this.recipeFormService.isFormValid()) {
-      const newRecipe = this.recipeFormService.getRecipe();
-      newRecipe.createdAt = this.recipe?.createdAt;
-
-      if (this.isEditMode) {
-        this.recipeService.updateRecipe(this.recipeId!, newRecipe).then(() => {
-          this.router.navigate(['/recipes', this.recipeId!]);
-          this.recipeFormService.clearForms();
-        });
-      } else {
-        this.recipeService.addRecipe(newRecipe).then((id) => {
-          this.router.navigate(['/recipes', id]);
-          this.recipeFormService.clearForms();
-        });
-      }
-    } else {
+  public async onSubmit(): Promise<void> {
+    if (!this.recipeFormService.isFormValid()) {
       alert('Пожалуйста, заполните все необходимые поля!');
+      return;
+    }
+
+    const newRecipe = this.recipeFormService.getRecipe();
+    if (this.isEditMode && this.recipe?.createdAt) {
+      newRecipe.createdAt = this.recipe.createdAt;
+    }
+
+    this.loaderService.show();
+
+    try {
+      if (this.isEditMode) {
+        await this.recipeService.updateRecipe(this.recipeId!, newRecipe);
+        await this.router.navigate(['/recipes', this.recipeId!]);
+      } else {
+        const id = await this.recipeService.addRecipe(newRecipe);
+        await this.router.navigate(['/recipes', id]);
+      }
+    } catch (error) {
+      console.error('Ошибка при сохранении рецепта:', error);
+      alert('Произошла ошибка при сохранении. Попробуйте снова.');
+    } finally {
+      this.loaderService.hide();
+      this.recipeFormService.clearForms();
     }
   }
 }
